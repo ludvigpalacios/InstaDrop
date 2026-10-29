@@ -186,7 +186,9 @@ static void startTouchTracking(void) {
 
 - (void)awakeFromNib {
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
-    self.statusBar.button.title = @"⥺";
+    NSImage *icon = [NSImage imageNamed:@"StatusIcon"];
+    icon.size = NSMakeSize(18, 18);
+    self.statusBar.button.image = icon;
     self.statusBar.menu = _statusMenu;
 
     if (kDonateURL.length == 0) {
