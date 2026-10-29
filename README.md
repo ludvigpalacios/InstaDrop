@@ -31,6 +31,14 @@ InstaDrop does the tap-to-drag itself instead of fighting the system's version:
 A plain double tap (no movement, no hold) is left alone, so double-clicking
 still works normally.
 
+### Responsive dragging
+
+The drag starts almost the instant your second touch begins to move: after a
+tiny movement, or after a 0.1 second hold if you don't move yet. That keeps
+dragging snappy, so it feels like a real button press rather than a gesture
+waiting to be recognised. Both thresholds are adjustable (see
+[Tuning](#tuning)).
+
 ## Requirements
 
 - macOS 27 Golden Gate on a Mac with Apple Silicon
@@ -70,8 +78,8 @@ The gesture timing lives in constants at the top of `AppDelegate.m`:
 | `kTapMaxDuration`   | 0.25 s  | A touch shorter than this can count as a tap                 |
 | `kTapMaxMove`       | 0.03    | ...if it moved less than this (fraction of the trackpad)     |
 | `kDoubleTapWindow`  | 0.35 s  | The second touch must start within this time after the tap   |
-| `kDragStartMove`    | 0.012   | The second touch becomes a drag after moving this much       |
-| `kDragStartHold`    | 0.18 s  | ...or after being held this long                             |
+| `kDragStartMove`    | 0.004   | The second touch becomes a drag after moving this much       |
+| `kDragStartHold`    | 0.10 s  | ...or after being held this long                             |
 
 If dragging starts too late or by accident, adjust those last two. If the second
 touch has to be too fast, raise `kDoubleTapWindow`.
