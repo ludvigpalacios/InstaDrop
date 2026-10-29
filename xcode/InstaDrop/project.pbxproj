@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DAE90AFC1FE5429C00555E3C /* No drag release delay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "No drag release delay.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAE90AFC1FE5429C00555E3C /* InstaDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "InstaDrop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAE90AFF1FE5429C00555E3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DAE90B001FE5429C00555E3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DAE90B021FE5429C00555E3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -41,7 +41,7 @@
 		DAE90AF31FE5429C00555E3C = {
 			isa = PBXGroup;
 			children = (
-				DAE90AFE1FE5429C00555E3C /* No drag release delay */,
+				DAE90AFE1FE5429C00555E3C /* InstaDrop */,
 				DAE90AFD1FE5429C00555E3C /* Products */,
 				DAE90B111FE5459400555E3C /* Frameworks */,
 			);
@@ -50,12 +50,12 @@
 		DAE90AFD1FE5429C00555E3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DAE90AFC1FE5429C00555E3C /* No drag release delay.app */,
+				DAE90AFC1FE5429C00555E3C /* InstaDrop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		DAE90AFE1FE5429C00555E3C /* No drag release delay */ = {
+		DAE90AFE1FE5429C00555E3C /* InstaDrop */ = {
 			isa = PBXGroup;
 			children = (
 				DAE90AFF1FE5429C00555E3C /* AppDelegate.h */,
@@ -66,7 +66,7 @@
 				DAE90B071FE5429C00555E3C /* Info.plist */,
 				DAE90B081FE5429C00555E3C /* main.m */,
 			);
-			path = "No drag release delay";
+			path = "InstaDrop";
 			sourceTree = "<group>";
 		};
 		DAE90B111FE5459400555E3C /* Frameworks */ = {
@@ -80,9 +80,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DAE90AFB1FE5429C00555E3C /* No drag release delay */ = {
+		DAE90AFB1FE5429C00555E3C /* InstaDrop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DAE90B0D1FE5429C00555E3C /* Build configuration list for PBXNativeTarget "No drag release delay" */;
+			buildConfigurationList = DAE90B0D1FE5429C00555E3C /* Build configuration list for PBXNativeTarget "InstaDrop" */;
 			buildPhases = (
 				DAE90AF81FE5429C00555E3C /* Sources */,
 				DAE90AF91FE5429C00555E3C /* Frameworks */,
@@ -92,9 +92,9 @@
 			);
 			dependencies = (
 			);
-			name = "No drag release delay";
-			productName = "No drag release delay";
-			productReference = DAE90AFC1FE5429C00555E3C /* No drag release delay.app */;
+			name = "InstaDrop";
+			productName = "InstaDrop";
+			productReference = DAE90AFC1FE5429C00555E3C /* InstaDrop.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -103,9 +103,8 @@
 		DAE90AF41FE5429C00555E3C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 2710;
-				ORGANIZATIONNAME = "Pravdomil Toman";
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = InstaDrop;
 				TargetAttributes = {
 					DAE90AFB1FE5429C00555E3C = {
 						CreatedOnToolsVersion = 9.2;
@@ -113,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = DAE90AF71FE5429C00555E3C /* Build configuration list for PBXProject "No drag release delay" */;
+			buildConfigurationList = DAE90AF71FE5429C00555E3C /* Build configuration list for PBXProject "InstaDrop" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -126,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DAE90AFB1FE5429C00555E3C /* No drag release delay */,
+				DAE90AFB1FE5429C00555E3C /* InstaDrop */,
 			);
 		};
 /* End PBXProject section */
@@ -181,7 +180,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -189,10 +187,8 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -201,11 +197,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -224,7 +218,6 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Debug;
 		};
@@ -242,7 +235,6 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -250,10 +242,8 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -262,11 +252,9 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
-				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -278,7 +266,6 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 			};
 			name = Release;
 		};
@@ -291,19 +278,15 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
-				INFOPLIST_FILE = "No drag release delay/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = "pravdomil.No-drag-release-delay";
+				INFOPLIST_FILE = "InstaDrop/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.instadrop.InstaDrop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -318,19 +301,15 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SYSTEM_LIBRARY_DIR)/PrivateFrameworks",
 				);
-				INFOPLIST_FILE = "No drag release delay/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
-				PRODUCT_BUNDLE_IDENTIFIER = "pravdomil.No-drag-release-delay";
+				INFOPLIST_FILE = "InstaDrop/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.instadrop.InstaDrop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
@@ -339,7 +318,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DAE90AF71FE5429C00555E3C /* Build configuration list for PBXProject "No drag release delay" */ = {
+		DAE90AF71FE5429C00555E3C /* Build configuration list for PBXProject "InstaDrop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DAE90B0B1FE5429C00555E3C /* Debug */,
@@ -348,7 +327,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DAE90B0D1FE5429C00555E3C /* Build configuration list for PBXNativeTarget "No drag release delay" */ = {
+		DAE90B0D1FE5429C00555E3C /* Build configuration list for PBXNativeTarget "InstaDrop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DAE90B0E1FE5429C00555E3C /* Debug */,

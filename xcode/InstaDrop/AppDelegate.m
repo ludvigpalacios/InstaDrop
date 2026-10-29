@@ -1,9 +1,6 @@
 //
 //  AppDelegate.m
-//  No drag release delay
-//
-//  Created by Pravdomil Toman on 16/12/2017.
-//  Copyright © 2017 Pravdomil Toman. All rights reserved.
+//  InstaDrop
 //
 //  Implements tap-to-drag itself so the button is released the instant the
 //  finger lifts:
@@ -26,6 +23,10 @@ static const double kDoubleTapWindow = 0.25;   // second touch must start this s
 static const double kDragStartMove   = 0.004;  // second touch becomes a drag after moving this much...
 static const double kDragStartHold   = 0.10;   // ...or after being held this long
 static const double kNoTap           = -100;
+
+// Link opened by the "Donate" menu item (GitHub Sponsors, Ko-fi, PayPal.me, ...).
+// Leave empty to hide the menu item.
+static NSString *const kDonateURL = @"";
 
 typedef NS_ENUM(int, Phase) {
     PhaseIdle,           // no finger down
@@ -187,10 +188,20 @@ static void startTouchTracking(void) {
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     self.statusBar.button.title = @"⥺";
     self.statusBar.menu = _statusMenu;
+
+    if (kDonateURL.length == 0) {
+        NSInteger index = [_statusMenu indexOfItemWithTarget:self andAction:@selector(donate:)];
+        if (index >= 0) {
+            [_statusMenu removeItemAtIndex:index];
+            if (index < _statusMenu.numberOfItems && _statusMenu.itemArray[index].isSeparatorItem) {
+                [_statusMenu removeItemAtIndex:index]; // the separator that followed it
+            }
+        }
+    }
 }
 
 - (IBAction)donate:(id)sender {
-    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:@"https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BCL2X3AFQBAP2&item_name=No%20drag%20release%20delay%20beer"]];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:kDonateURL]];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)notification {

@@ -1,9 +1,6 @@
 //
 //  MultiTouch.h
-//  No drag release delay
-//
-//  Created by Pravdomil Toman on 16/12/2017.
-//  Copyright © 2017 Pravdomil Toman. All rights reserved.
+//  InstaDrop
 //
 
 #ifndef MultiTouch_h
@@ -31,14 +28,10 @@ typedef struct {
 
 typedef void *MTDeviceRef;
 
-// The first argument is a device pointer, so it must be declared as one
-// (it was `int` before, which is wrong on 64-bit and sloppy on arm64).
 typedef int (*MTContactCallbackFunction)(MTDeviceRef, Finger*, int, double, int);
 
-MTDeviceRef MTDeviceCreateDefault(void);
 CFArrayRef MTDeviceCreateList(void); // all multitouch devices (Create rule: caller releases)
 void MTRegisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int); // thanks comex
-int MTDeviceGetVersion(MTDeviceRef, int);
 
 #endif /* MultiTouch_h */

@@ -64,7 +64,7 @@ changes. Remove the app from the Accessibility list, add it again, and relaunch.
 
 ## Building from source
 
-1. Open `No drag release delay.xcodeproj` in Xcode.
+1. Open `InstaDrop.xcodeproj` in Xcode.
 2. The project is set to **Sign to Run Locally** and builds for arm64 and
    x86_64. No developer account is needed.
 3. Build and run with **Product → Run**.
@@ -75,14 +75,15 @@ The gesture timing lives in constants at the top of `AppDelegate.m`:
 
 | Constant            | Default | Meaning                                                      |
 | ------------------- | ------- | ------------------------------------------------------------ |
-| `kTapMaxDuration`   | 0.25 s  | A touch shorter than this can count as a tap                 |
+| `kTapMaxDuration`   | 0.20 s  | A touch shorter than this can count as a tap                 |
 | `kTapMaxMove`       | 0.03    | ...if it moved less than this (fraction of the trackpad)     |
-| `kDoubleTapWindow`  | 0.35 s  | The second touch must start within this time after the tap   |
+| `kDoubleTapWindow`  | 0.25 s  | The second touch must start within this time after the tap   |
 | `kDragStartMove`    | 0.004   | The second touch becomes a drag after moving this much       |
 | `kDragStartHold`    | 0.10 s  | ...or after being held this long                             |
 
-If dragging starts too late or by accident, adjust those last two. If the second
-touch has to be too fast, raise `kDoubleTapWindow`.
+If dragging starts too late or by accident, adjust the two `kDragStart` values.
+If moving the cursor right after a click starts a drag, lower `kDoubleTapWindow`.
+If the second touch of a real double-tap drag has to be too fast, raise it.
 
 ## Troubleshooting
 
