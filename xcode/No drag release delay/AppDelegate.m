@@ -26,6 +26,10 @@ static const double kDoubleTapWindow  = 0.35;  // second touch must start within
 static const double kDragStartMove    = 0.012; // second touch becomes a drag after moving this much
 static const double kDragStartHold    = 0.18;  // ...or after being held this long
 
+// YES: replace the system's move events with drag events posted at the HID level.
+// NO:  just change the type of the system's move events.
+static const bool kRepostDragEvents = true;
+
 typedef NS_ENUM(int, Phase) {
     PhaseIdle,          // nothing touching
     PhaseFirstTouch,    // one finger down, might become a tap
@@ -63,6 +67,9 @@ static void postMouseEvent(CGEventType eventType) {
         CGEventSetIntegerValueField(event, kCGMouseEventClickState, 1);
         CGEventPost(kCGHIDEventTap, event);
         CFRelease(event);
+        NSLog(@"Posted %@ at (%.0f, %.0f)",
+              eventType == kCGEventLeftMouseDown ? @"mouse down" : @"mouse up",
+              location.x, location.y);
     }
     if (source) CFRelease(source);
 }
@@ -80,8 +87,25 @@ static CGEventRef moveTapCallback(CGEventTapProxy proxy, CGEventType type, CGEve
     }
 
     if (type == kCGEventMouseMoved && dragging) {
-        CGEventSetType(event, kCGEventLeftMouseDragged);
         convertedMoves++;
+        if (kRepostDragEvents) {
+            // Swallow the plain move and post a real drag event at the lowest level instead.
+            static CGEventSourceRef dragSource = NULL;
+            if (!dragSource) dragSource = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+            CGEventRef drag = CGEventCreateMouseEvent(dragSource, kCGEventLeftMouseDragged,
+                                                      CGEventGetLocation(event), kCGMouseButtonLeft);
+            if (drag) {
+                CGEventSetIntegerValueField(drag, kCGMouseEventDeltaX,
+                                            CGEventGetIntegerValueField(event, kCGMouseEventDeltaX));
+                CGEventSetIntegerValueField(drag, kCGMouseEventDeltaY,
+                                            CGEventGetIntegerValueField(event, kCGMouseEventDeltaY));
+                CGEventSetIntegerValueField(drag, kCGMouseEventClickState, 1);
+                CGEventPost(kCGHIDEventTap, drag);
+                CFRelease(drag);
+            }
+            return NULL;
+        }
+        CGEventSetType(event, kCGEventLeftMouseDragged);
     } else if (type == kCGEventLeftMouseDown || type == kCGEventLeftMouseUp) {
         NSLog(@"Tap saw %@ (source pid %lld, clickState %lld)",
               type == kCGEventLeftMouseDown ? @"LeftMouseDown" : @"LeftMouseUp",
@@ -180,6 +204,13 @@ static int callback(MTDeviceRef device, Finger *data, int nFingers, double times
                     convertedMoves = 0;
                     dragging = true;
                     postMouseEvent(kCGEventLeftMouseDown);
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 100 * NSEC_PER_MSEC),
+                                   dispatch_get_main_queue(), ^{
+                        NSLog(@"Button state 100ms later: HID=%d session=%d NSEvent=%d",
+                              CGEventSourceButtonState(kCGEventSourceStateHIDSystemState, kCGMouseButtonLeft),
+                              CGEventSourceButtonState(kCGEventSourceStateCombinedSessionState, kCGMouseButtonLeft),
+                              (int)([NSEvent pressedMouseButtons] & 1));
+                    });
                     phase = PhaseDragging;
                 }
                 break;

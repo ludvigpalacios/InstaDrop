@@ -9,6 +9,8 @@
 #ifndef MultiTouch_h
 #define MultiTouch_h
 
+#import <CoreFoundation/CoreFoundation.h>
+
 // https://github.com/jnordberg/FingerMgmt/blob/master/FingerMgmt/MultiTouch.h
 
 typedef struct { float x,y; } mtPoint;
@@ -28,9 +30,13 @@ typedef struct {
 } Finger;
 
 typedef void *MTDeviceRef;
-typedef int (*MTContactCallbackFunction)(int,Finger*,int,double,int);
+
+// The first argument is a device pointer, so it must be declared as one
+// (it was `int` before, which is wrong on 64-bit and sloppy on arm64).
+typedef int (*MTContactCallbackFunction)(MTDeviceRef, Finger*, int, double, int);
 
 MTDeviceRef MTDeviceCreateDefault(void);
+CFArrayRef MTDeviceCreateList(void); // all multitouch devices (Create rule: caller releases)
 void MTRegisterContactFrameCallback(MTDeviceRef, MTContactCallbackFunction);
 void MTDeviceStart(MTDeviceRef, int); // thanks comex
 int MTDeviceGetVersion(MTDeviceRef, int);
