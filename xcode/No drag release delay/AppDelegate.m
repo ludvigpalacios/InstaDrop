@@ -20,9 +20,9 @@
 #import "MultiTouch.h"
 
 // Tuning. Trackpad positions are normalized (0...1), times are in seconds.
-static const double kTapMaxDuration  = 0.25;   // a touch shorter than this can be a tap...
+static const double kTapMaxDuration  = 0.20;   // a touch shorter than this can be a tap...
 static const double kTapMaxMove      = 0.03;   // ...if it moved less than this
-static const double kDoubleTapWindow = 0.35;   // second touch must start this soon after a tap
+static const double kDoubleTapWindow = 0.25;   // second touch must start this soon after a tap
 static const double kDragStartMove   = 0.004;  // second touch becomes a drag after moving this much...
 static const double kDragStartHold   = 0.10;   // ...or after being held this long
 static const double kNoTap           = -100;
