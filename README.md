@@ -1,3 +1,4 @@
+<img width="1254" height="1254" alt="InstaDroppng" src="https://github.com/user-attachments/assets/0f101cc1-0fea-417c-a307-ddaa8203e617" />
 # InstaDrop
 
 **Lift your finger, drop the item. Instantly.**
