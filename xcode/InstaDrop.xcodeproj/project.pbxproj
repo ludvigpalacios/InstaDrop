@@ -15,7 +15,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		DAE90AFC1FE5429C00555E3C /* InstaDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaDrop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAE90AFC1FE5429C00555E3C /* InstaDrop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = InstaDrop.app; path = /Users/pc/Documents/InstaDrop/InstaDrop/xcode/build/Debug/InstaDrop.app; sourceTree = "<absolute>"; };
 		DAE90AFF1FE5429C00555E3C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		DAE90B001FE5429C00555E3C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		DAE90B021FE5429C00555E3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +50,6 @@
 		DAE90AFD1FE5429C00555E3C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DAE90AFC1FE5429C00555E3C /* InstaDrop.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
