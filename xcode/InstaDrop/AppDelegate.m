@@ -22,6 +22,7 @@ static const double kTapMaxMove      = 0.03;   // ...if it moved less than this
 static const double kDoubleTapWindow = 0.25;   // second touch must start this soon after a tap
 static const double kDragStartMove   = 0.004;  // second touch becomes a drag after moving this much...
 static const double kDragStartHold   = 0.10;   // ...or after being held this long
+static const double kTypingGuard     = 0.5;    // ignore touches that start this soon after a key press
 static const double kNoTap           = -100;
 
 // Link opened by the "Donate" menu item (GitHub Sponsors, Ko-fi, PayPal.me, ...).
@@ -126,6 +127,13 @@ static int touchCallback(MTDeviceRef device, Finger *data, int nFingers, double 
         switch (phase) {
             case PhaseIdle:
                 if (touching == 1) {
+                    // A touch that starts while typing is almost certainly accidental.
+                    if (CGEventSourceSecondsSinceLastEventType(kCGEventSourceStateHIDSystemState,
+                                                               kCGEventKeyDown) < kTypingGuard) {
+                        lastTapEnd = kNoTap;
+                        phase = PhaseIgnore;
+                        break;
+                    }
                     touchStart = timestamp;
                     startPos = first->normalized.pos;
                     maxMove = 0;
@@ -188,7 +196,9 @@ static void startTouchTracking(void) {
     self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSVariableStatusItemLength];
     NSImage *icon = [NSImage imageNamed:@"StatusIcon"];
     icon.size = NSMakeSize(18, 18);
+    icon.template = YES;
     self.statusBar.button.image = icon;
+    
     self.statusBar.menu = _statusMenu;
 
     if (kDonateURL.length == 0) {
